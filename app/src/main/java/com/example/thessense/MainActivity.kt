@@ -60,14 +60,17 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     setHomeTitle()
+                    navController.navigate(R.id.nav_home)
                 }
                 R.id.nav_gallery -> {
                     // Set the title for Gallery
                     supportActionBar?.title = "Ποιότητα Νερού"
+                    navController.navigate(R.id.nav_gallery)
                 }
                 R.id.nav_slideshow -> {
                     // Set the title for Slideshow
                     supportActionBar?.title = "Ποιότητα Αέρα"
+                    navController.navigate(R.id.nav_slideshow)
                 }
                 else -> {
                     Toast.makeText(this, "Unknown item selected", Toast.LENGTH_SHORT).show()
