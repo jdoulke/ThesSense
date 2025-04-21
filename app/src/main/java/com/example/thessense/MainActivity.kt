@@ -1,7 +1,13 @@
 package com.example.thessense
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ForegroundColorSpan
 import android.view.Menu
+import android.view.View
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,6 +17,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import com.example.thessense.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMain.toolbar)
+
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.lightblue)
 
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -43,6 +53,37 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // ThessSense title change
+        setHomeTitle()
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    setHomeTitle()
+                }
+                R.id.nav_gallery -> {
+                    // Set the title for Gallery
+                    supportActionBar?.title = "Gallery"
+                }
+                R.id.nav_slideshow -> {
+                    // Set the title for Slideshow
+                    supportActionBar?.title = "Slideshow"
+                }
+                else -> {
+                    Toast.makeText(this, "Unknown item selected", Toast.LENGTH_SHORT).show()
+                }
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+    }
+
+    private fun setHomeTitle() {
+        val titleText = "thesssense"
+        val spannableTitle = SpannableString(titleText)
+        spannableTitle.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.thess)), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableTitle.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue)), 5, titleText.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        supportActionBar?.title = spannableTitle
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
