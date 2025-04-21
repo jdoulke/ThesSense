@@ -8,6 +8,9 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Αρχική</string>
+    <string name="home_image_desc">Εικόνα Αρχικής Σελίδας</string>
     <string name="menu_gallery">Δεδομένα Νερού</string>
     <string name="menu_slideshow">Δεδομένα Αέρα</string>
+    <string name="home_desc1">ΤΙ ΚΑΝΕΙ Η ΕΦΑΡΜΟΓΗ ΜΑΣ</string>
+    <string name="home_desc2">Η thesssense σας παρέχει δεδομένα της ποιότητας του νερού και του αέρα στον Νομό Θεσσαλονίκης. Μπορείτε να ελέγξτε τα επίπεδα ρύπανσης, καθώς και να συγκρίνετε στοιχεία ανά χρονική περίοδο.</string>
 </resources>
