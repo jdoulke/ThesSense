@@ -63,11 +63,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_gallery -> {
                     // Set the title for Gallery
-                    supportActionBar?.title = "Gallery"
+                    supportActionBar?.title = "Ποιότητα Νερού"
                 }
                 R.id.nav_slideshow -> {
                     // Set the title for Slideshow
-                    supportActionBar?.title = "Slideshow"
+                    supportActionBar?.title = "Ποιότητα Αέρα"
                 }
                 else -> {
                     Toast.makeText(this, "Unknown item selected", Toast.LENGTH_SHORT).show()

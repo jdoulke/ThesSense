@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ThesSense</string>
+    <string name="app_name">ThessSense</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Αρχική</string>
+    <string name="menu_gallery">Δεδομένα Νερού</string>
+    <string name="menu_slideshow">Δεδομένα Αέρα</string>
 </resources>
