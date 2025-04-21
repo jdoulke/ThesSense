@@ -33,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/home_desc1"
+                android:letterSpacing="0.03"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/blue"
