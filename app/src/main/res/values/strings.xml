@@ -5,12 +5,12 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about">Σχετικά με την εφαρμογή</string>
 
     <string name="menu_home">Αρχική</string>
     <string name="home_image_desc">Εικόνα Αρχικής Σελίδας</string>
     <string name="menu_gallery">Δεδομένα Νερού</string>
     <string name="menu_slideshow">Δεδομένα Αέρα</string>
     <string name="home_desc1">ΤΙ ΚΑΝΕΙ Η ΕΦΑΡΜΟΓΗ ΜΑΣ</string>
-    <string name="home_desc2">Η thesssense σας παρέχει δεδομένα της ποιότητας του νερού και του αέρα στον Νομό Θεσσαλονίκης. Μπορείτε να ελέγξτε τα επίπεδα ρύπανσης, καθώς και να συγκρίνετε στοιχεία ανά χρονική περίοδο.</string>
+    <string name="home_desc2">Η ThessSense σας παρέχει δεδομένα της ποιότητας του νερού και του αέρα στον Νομό Θεσσαλονίκης. Μπορείτε να ελέγξτε τα επίπεδα ρύπανσης, καθώς και να συγκρίνετε στοιχεία ανά χρονική περίοδο.</string>
 </resources>

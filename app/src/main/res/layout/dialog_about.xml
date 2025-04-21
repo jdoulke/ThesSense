@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Σχετικά με την εφαρμογή"
+        android:textColor="@color/thess"
+        android:textSize="22sp"
+        android:fontFamily="@font/comfortaa_semibold"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/dialogMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Η εφαρμογή ThessSense δημιουργήθηκε από τον Ιωάννη Δουλκερίδη και τον Ευστράτιο Δεληγεώργη. Τα δεδομένα που χρησιμοποιήθηκαν προέρχονται από το Open Data Marketplace."
+        android:textColor="@color/thess"
+        android:justificationMode="inter_word"
+        android:textSize="15sp"
+        android:lineSpacingExtra="2dp"
+        android:fontFamily="@font/comfortaa_regular" />
+
+</LinearLayout>

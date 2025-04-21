@@ -6,6 +6,7 @@ import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
@@ -58,12 +59,10 @@ class MainActivity : AppCompatActivity() {
                     setHomeTitle()
                 }
                 R.id.nav_gallery -> {
-                    // Set the title for Gallery
                     supportActionBar?.title = "Ποιότητα Νερού"
                     navController.navigate(R.id.nav_gallery)
                 }
                 R.id.nav_slideshow -> {
-                    // Set the title for Slideshow
                     supportActionBar?.title = "Ποιότητα Αέρα"
                     navController.navigate(R.id.nav_slideshow)
                 }
@@ -88,6 +87,24 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_about -> {  // Your menu item ID
+                showAboutDialog()      // Call a function to show the popup
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showAboutDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_about, null)
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this, R.style.CustomAlertDialog)
+        builder.setView(dialogView)
+        val dialog = builder.create()
+        dialog.show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
