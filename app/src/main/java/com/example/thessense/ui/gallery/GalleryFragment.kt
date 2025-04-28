@@ -1,12 +1,13 @@
 package com.example.thessense.ui.gallery
 
+import android.R
 import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.thessense.databinding.FragmentGalleryBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -15,18 +16,27 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
-import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.HorizontalScrollView
 import android.widget.ImageView
-import com.google.android.material.internal.ViewUtils.dpToPx
+import android.widget.NumberPicker
+import android.widget.TextView
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.MarkerOptions
+import org.json.JSONObject
+import java.io.InputStream
 
 class GalleryFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentGalleryBinding? = null
     private val binding get() = _binding!!
+
     private var isMapExpanded = false
     private lateinit var mapContainer: FrameLayout
     private lateinit var fullscreenIcon: ImageView
+
+    private var selectedYear: Int = 2023
+    private var selectedMonth: Int = 1 // Starting from January
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,21 +51,43 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
 
         fullscreenIcon = root.findViewById<ImageView>(com.example.thessense.R.id.fullscreen_icon)
         mapContainer = root.findViewById(com.example.thessense.R.id.map_container)
-
         fullscreenIcon.setOnClickListener{toggleMapSize()}
 
+        val yearPicker: NumberPicker = root.findViewById(com.example.thessense.R.id.year_picker)
+        val monthPicker: NumberPicker = root.findViewById(com.example.thessense.R.id.month_picker)
+
+        yearPicker.minValue = 2023
+        yearPicker.maxValue = 2024
+        yearPicker.value = 2023
+
+        monthPicker.minValue = 1
+        monthPicker.maxValue = 12
+        monthPicker.value = 1
+
+        val months = arrayOf("Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος")
+        monthPicker.displayedValues = months
+
+        yearPicker.setOnValueChangedListener { _, _, newVal ->
+            selectedYear = newVal
+            //updateMapMarkers(selectedYear, selectedMonth)
+        }
+
+        monthPicker.setOnValueChangedListener { _, _, newVal ->
+            selectedMonth = newVal
+            //updateMapMarkers(selectedYear, selectedMonth)
+        }
 
         return root
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         val thessaloniki = LatLng(40.6401, 22.9444)
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(thessaloniki, 12f))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(thessaloniki, 13f))
 
         val bounds = LatLngBounds(LatLng(40.62, 22.93), LatLng(40.65, 23.04))
         googleMap.setLatLngBoundsForCameraTarget(bounds)
 
-        googleMap.setMinZoomPreference(11f)
+        googleMap.setMinZoomPreference(13f)
         googleMap.setMaxZoomPreference(16f)
 
         googleMap.uiSettings.isMapToolbarEnabled = false
@@ -65,6 +97,7 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
 
         val style = MapStyleOptions.loadRawResourceStyle(requireContext(), com.example.thessense.R.raw.map_style)
         googleMap.setMapStyle(style)
+        addMarkersFromJson(googleMap)
     }
 
     private fun toggleMapSize() {
@@ -98,6 +131,44 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
     private fun dpToPx(dp: Int): Int {
         val density = resources.displayMetrics.density
         return (dp * density).toInt()
+    }
+
+    private fun loadJSONFromAsset(): String {
+        val json: String?
+        try {
+            val inputStream: InputStream = requireContext().assets.open("water_data.json")
+            json = inputStream.bufferedReader().use { it.readText() }
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            return ""
+        }
+        return json
+    }
+
+    private fun addMarkersFromJson(googleMap: GoogleMap) {
+        try {
+            val jsonData = loadJSONFromAsset()
+            val jsonObject = JSONObject(jsonData)
+
+            val location = jsonObject.getJSONArray("40 Εκκλησίες")
+            for (i in 0 until location.length()) {
+                val locationData = location.getJSONObject(i)
+                if (locationData.getString("Year") == "2023" && locationData.getString("Month") == "Δεκέμβριος") {
+                    val tholotita = locationData.getString("Θολότητα NTU")
+                    val snippet = "Θολότητα NTU: $tholotita"
+                    val ekklisiesLocation = LatLng(40.6457, 22.9597)
+                    googleMap.addMarker(
+                        MarkerOptions()
+                            .position(ekklisiesLocation)
+                            .title("40 Εκκλησίες")
+                            .snippet(snippet)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                    )
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onDestroyView() {
