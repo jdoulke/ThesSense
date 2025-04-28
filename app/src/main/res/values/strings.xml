@@ -13,4 +13,5 @@
     <string name="menu_slideshow">Δεδομένα Αέρα</string>
     <string name="home_desc1">ΤΙ ΚΑΝΕΙ Η ΕΦΑΡΜΟΓΗ ΜΑΣ</string>
     <string name="home_desc2">Η ThessSense σας παρέχει δεδομένα της ποιότητας του νερού και του αέρα στον Νομό Θεσσαλονίκης. Μπορείτε να ελέγξτε τα επίπεδα ρύπανσης, καθώς και να συγκρίνετε στοιχεία ανά χρονική περίοδο.</string>
+    <string name="fullscreen_icon_desc">Επέκταση Χάρτη</string>
 </resources>
