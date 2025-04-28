@@ -47,10 +47,18 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="NumberPickerStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="NumberPickerStyleYear" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/blue</item>
+        <item name="android:fontFamily">@font/lexend_medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="colorControlNormal">@color/blue</item>
+    </style>
+
+    <style name="NumberPickerStyleMonth" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColorPrimary">@color/blue</item>
         <item name="android:fontFamily">@font/comfortaa_bold</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="colorControlNormal">@color/blue</item>
     </style>
 
 </resources>

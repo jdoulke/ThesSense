@@ -2,6 +2,8 @@ package com.example.thessense.ui.gallery
 
 import android.R
 import android.animation.ValueAnimator
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,18 +27,21 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import org.json.JSONObject
 import java.io.InputStream
+import java.lang.reflect.Field
 
 class GalleryFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentGalleryBinding? = null
     private val binding get() = _binding!!
 
+    private var googleMap: GoogleMap? = null
+
     private var isMapExpanded = false
     private lateinit var mapContainer: FrameLayout
     private lateinit var fullscreenIcon: ImageView
 
     private var selectedYear: Int = 2023
-    private var selectedMonth: Int = 1 // Starting from January
+    private var selectedMonth: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,35 +74,36 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
 
         yearPicker.setOnValueChangedListener { _, _, newVal ->
             selectedYear = newVal
-            //updateMapMarkers(selectedYear, selectedMonth)
+            addMarkersFromJson()
         }
 
         monthPicker.setOnValueChangedListener { _, _, newVal ->
             selectedMonth = newVal
-            //updateMapMarkers(selectedYear, selectedMonth)
+            addMarkersFromJson()
         }
 
         return root
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
         val thessaloniki = LatLng(40.6401, 22.9444)
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(thessaloniki, 13f))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(thessaloniki, 13f))
 
         val bounds = LatLngBounds(LatLng(40.62, 22.93), LatLng(40.65, 23.04))
-        googleMap.setLatLngBoundsForCameraTarget(bounds)
+        map.setLatLngBoundsForCameraTarget(bounds)
 
-        googleMap.setMinZoomPreference(13f)
-        googleMap.setMaxZoomPreference(16f)
+        map.setMinZoomPreference(13f)
+        map.setMaxZoomPreference(16f)
 
-        googleMap.uiSettings.isMapToolbarEnabled = false
-        googleMap.uiSettings.isIndoorLevelPickerEnabled = false
-        googleMap.uiSettings.isMyLocationButtonEnabled = false
-        googleMap.uiSettings.isCompassEnabled = false
+        map.uiSettings.isMapToolbarEnabled = false
+        map.uiSettings.isIndoorLevelPickerEnabled = false
+        map.uiSettings.isMyLocationButtonEnabled = false
+        map.uiSettings.isCompassEnabled = false
 
         val style = MapStyleOptions.loadRawResourceStyle(requireContext(), com.example.thessense.R.raw.map_style)
-        googleMap.setMapStyle(style)
-        addMarkersFromJson(googleMap)
+        map.setMapStyle(style)
+        addMarkersFromJson()
     }
 
     private fun toggleMapSize() {
@@ -145,29 +151,48 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
         return json
     }
 
-    private fun addMarkersFromJson(googleMap: GoogleMap) {
-        try {
-            val jsonData = loadJSONFromAsset()
-            val jsonObject = JSONObject(jsonData)
+    private fun addMarkersFromJson() {
+        googleMap?.let { map ->
+            map.clear()
+            try {
+                val jsonData = loadJSONFromAsset()
+                val jsonObject = JSONObject(jsonData)
 
-            val location = jsonObject.getJSONArray("40 Εκκλησίες")
-            for (i in 0 until location.length()) {
-                val locationData = location.getJSONObject(i)
-                if (locationData.getString("Year") == "2023" && locationData.getString("Month") == "Δεκέμβριος") {
-                    val tholotita = locationData.getString("Θολότητα NTU")
-                    val snippet = "Θολότητα NTU: $tholotita"
-                    val ekklisiesLocation = LatLng(40.6457, 22.9597)
-                    googleMap.addMarker(
-                        MarkerOptions()
-                            .position(ekklisiesLocation)
-                            .title("40 Εκκλησίες")
-                            .snippet(snippet)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                    )
+                val targetMonth = when (selectedMonth) {
+                    1 -> "Ιανουάριος"
+                    2 -> "Φεβρουάριος"
+                    3 -> "Μάρτιος"
+                    4 -> "Απρίλιος"
+                    5 -> "Μάιος"
+                    6 -> "Ιούνιος"
+                    7 -> "Ιούλιος"
+                    8 -> "Αύγουστος"
+                    9 -> "Σεπτέμβριος"
+                    10 -> "Οκτώβριος"
+                    11 -> "Νοέμβριος"
+                    12 -> "Δεκέμβριος"
+                    else -> ""
                 }
+
+                val location = jsonObject.getJSONArray("40 Εκκλησίες")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val snippet = "Θολότητα NTU: $tholotita"
+                        val ekklisiesLocation = LatLng(40.6457, 22.9597)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(ekklisiesLocation)
+                                .title("40 Εκκλησίες")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 
