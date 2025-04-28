@@ -24,6 +24,7 @@ import android.widget.ImageView
 import android.widget.NumberPicker
 import android.widget.TextView
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.json.JSONObject
 import java.io.InputStream
@@ -90,7 +91,7 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
         val thessaloniki = LatLng(40.6401, 22.9444)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(thessaloniki, 13f))
 
-        val bounds = LatLngBounds(LatLng(40.62, 22.93), LatLng(40.65, 23.04))
+        val bounds = LatLngBounds(LatLng(40.60, 22.91), LatLng(40.64, 23.04))
         map.setLatLngBoundsForCameraTarget(bounds)
 
         map.setMinZoomPreference(13f)
@@ -103,6 +104,7 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
 
         val style = MapStyleOptions.loadRawResourceStyle(requireContext(), com.example.thessense.R.raw.map_style)
         map.setMapStyle(style)
+        map.setInfoWindowAdapter(CustomInfoWindowAdapter())
         addMarkersFromJson()
     }
 
@@ -174,13 +176,19 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                     else -> ""
                 }
 
-                val location = jsonObject.getJSONArray("40 Εκκλησίες")
+                var location = jsonObject.getJSONArray("40 Εκκλησίες")
                 for (i in 0 until location.length()) {
                     val locationData = location.getJSONObject(i)
                     if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
                         val tholotita = locationData.getString("Θολότητα NTU")
-                        val snippet = "Θολότητα NTU: $tholotita"
-                        val ekklisiesLocation = LatLng(40.6457, 22.9597)
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val ekklisiesLocation = LatLng(40.6328, 22.9677)
                         map.addMarker(
                             MarkerOptions()
                                 .position(ekklisiesLocation)
@@ -190,9 +198,375 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         )
                     }
                 }
+
+                location = jsonObject.getJSONArray("Ανάληψη")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val analipsiLocation = LatLng(40.6051, 22.9598)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(analipsiLocation)
+                                .title("Ανάληψη")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Άνω Πόλη")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val anopoliLocation = LatLng(40.6419, 22.9460)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(anopoliLocation)
+                                .title("Άνω Πόλη")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Άνω Τούμπα")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val anotoumpaLocation = LatLng(40.6179, 22.9756)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(anotoumpaLocation)
+                                .title("Άνω Τούμπα")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("ΔΕΘ-ΧΑΝΘ")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val dethhanthLocation = LatLng(40.6264, 22.9526)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(dethhanthLocation)
+                                .title("ΔΕΘ-ΧΑΝΘ")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Χαριλάου")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val harilaouLocation = LatLng(40.6001, 22.9702)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(harilaouLocation)
+                                .title("Χαριλάου")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Κάτω Τούμπα")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val katotoumpaLocation = LatLng(40.6110, 22.9657)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(katotoumpaLocation)
+                                .title("Κάτω Τούμπα")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Κέντρο Πόλης")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val kentropolisLocation = LatLng(40.6325, 22.9407)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(kentropolisLocation)
+                                .title("Κέντρο Πόλης")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Νέα Παραλία")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val neaparaliaLocation = LatLng(40.6149, 22.9518)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(neaparaliaLocation)
+                                .title("Νέα Παραλία")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Ντεπώ")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val ntepoLocation = LatLng(40.5935, 22.9593)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(ntepoLocation)
+                                .title("Ντεπώ")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Παναγία Φανερωμένη")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val panagiaLocation = LatLng(40.6467, 22.9383)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(panagiaLocation)
+                                .title("Παναγίας Φανερωμένης")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Πλατεία Δημοκρατίας")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val plateiaLocation = LatLng(40.6407, 22.9347)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(plateiaLocation)
+                                .title("Πλατεία Δημοκρατίας")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Σφαγεία")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val sfageiaLocation = LatLng(40.6418, 22.9105)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(sfageiaLocation)
+                                .title("Σφαγεία")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Σχολή Τυφλών")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val sholiLocation = LatLng(40.6136, 22.9536)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(sholiLocation)
+                                .title("Σχολή Τυφλών")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Τριανδρία")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val triandriaLocation = LatLng(40.6240, 22.9734)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(triandriaLocation)
+                                .title("Τριανδρία")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
+
+                location = jsonObject.getJSONArray("Ξηροκρήνη")
+                for (i in 0 until location.length()) {
+                    val locationData = location.getJSONObject(i)
+                    if (locationData.getString("Year") == selectedYear.toString() && locationData.getString("Month") == targetMonth) {
+                        val tholotita = locationData.getString("Θολότητα NTU")
+                        val hroma = locationData.getString("Χρώμα")
+                        val argilio = locationData.getString("Αργίλιο")
+                        val hloriouha = locationData.getString("Χλωριούχα")
+                        val agogimotita = locationData.getString("Αγωγιμότητα")
+                        val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
+                        val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
+                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        val ksirokriniLocation = LatLng(40.6484, 22.9285)
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(ksirokriniLocation)
+                                .title("Ξηροκρήνη")
+                                .snippet(snippet)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    }
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    inner class CustomInfoWindowAdapter : GoogleMap.InfoWindowAdapter {
+        private val window: View = layoutInflater.inflate(com.example.thessense.R.layout.custom_info_window, null)
+
+        override fun getInfoWindow(marker: Marker): View? {
+            render(marker, window)
+            return window
+        }
+
+        override fun getInfoContents(marker: Marker): View? {
+            return null
+        }
+
+        private fun render(marker: Marker, view: View) {
+            val titleTextView = view.findViewById<TextView>(com.example.thessense.R.id.title)
+            val snippetTextView = view.findViewById<TextView>(com.example.thessense.R.id.snippet)
+
+            titleTextView.text = marker.title
+            snippetTextView.text = marker.snippet
         }
     }
 
