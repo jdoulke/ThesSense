@@ -41,7 +41,7 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mapContainer: FrameLayout
     private lateinit var fullscreenIcon: ImageView
 
-    private var selectedYear: Int = 2023
+    private var selectedYear: Int = 2020
     private var selectedMonth: Int = 1
 
     override fun onCreateView(
@@ -62,9 +62,9 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
         val yearPicker: NumberPicker = root.findViewById(com.example.thessense.R.id.year_picker)
         val monthPicker: NumberPicker = root.findViewById(com.example.thessense.R.id.month_picker)
 
-        yearPicker.minValue = 2023
+        yearPicker.minValue = 2020
         yearPicker.maxValue = 2024
-        yearPicker.value = 2023
+        yearPicker.value = 2020
 
         monthPicker.minValue = 1
         monthPicker.maxValue = 12
