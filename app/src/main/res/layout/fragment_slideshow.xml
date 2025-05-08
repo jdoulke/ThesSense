@@ -1,22 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slideshow.SlideshowFragment">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/text_slideshow"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+
+        <!-- Map Container -->
+        <FrameLayout
+            android:id="@+id/map_container"
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/fullscreen_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_fullscreen"
+                android:contentDescription="Αναπαραγωγή σε πλήρη οθόνη"
+                android:layout_gravity="end"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:tint="@color/thess"
+                android:background="@drawable/fullscreen_background"
+                android:padding="4dp" />
+
+        </FrameLayout>
+
+        <!-- Year & Month Pickers -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <NumberPicker
+                android:id="@+id/year_picker"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:theme="@style/NumberPickerStyleYear"
+                android:selectionDividerHeight="1.3dp"
+                android:layout_marginEnd="20dp" />
+
+            <NumberPicker
+                android:id="@+id/month_picker"
+                android:layout_width="180dp"
+                android:layout_height="160dp"
+                android:theme="@style/NumberPickerStyleMonth"
+                android:selectionDividerHeight="1.3dp"
+                android:layout_marginStart="20dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ενδεικτικά όρια ποιότητας αέρα:"
+            android:textSize="21sp"
+            android:fontFamily="@font/lexend_medium"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/blue" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:fadingEdgeLength="64dp"
+            android:requiresFadingEdge="horizontal"
+            android:overScrollMode="always"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/card_container"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/blue"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Μονοξείδιο του Άνθρακα (CO)"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="≤ 10.000 μg/m³"
+                            android:textSize="18sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="24dp"
+                            android:fontFamily="@font/lexend_bold"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/petrol"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Μονοξείδιο του Αζώτου (NO)"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="≤ 200 μg/m³"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_bold"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/blue"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Διοξείδιο του Αζώτου (NO₂)"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="≤ 40 μg/m³"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_bold"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/cyan"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Διοξείδιο του Θείου (SO₂)"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="≤ 20 μg/m³"
+                            android:textSize="19sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_bold"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/blue"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Όζον (Ο₃) \n"
+                            android:layout_marginTop="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="≤ 100 μg/m³"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_bold"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+</ScrollView>

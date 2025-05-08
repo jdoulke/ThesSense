@@ -14,7 +14,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/map_container"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="400dp">
 
             <fragment
                 android:id="@+id/map"

@@ -110,7 +110,7 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
 
     private fun toggleMapSize() {
         val initialHeight = mapContainer.height
-        val targetHeight = if (isMapExpanded) dpToPx(300) else ViewGroup.LayoutParams.MATCH_PARENT
+        val targetHeight = if (isMapExpanded) dpToPx(400) else ViewGroup.LayoutParams.MATCH_PARENT
 
         if (targetHeight == ViewGroup.LayoutParams.MATCH_PARENT) {
             val params = mapContainer.layoutParams
