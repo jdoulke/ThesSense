@@ -1,0 +1,786 @@
+{
+  "2017": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 346.557,
+      "NO AVERAGE": 0.516,
+      "NO2 AVERAGE": 9.022,
+      "SO2 AVERAGE": 7.609,
+      "O3 AVERAGE": 54.072
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 334.965,
+      "NO AVERAGE": 0.248,
+      "NO2 AVERAGE": 8.126,
+      "SO2 AVERAGE": 5.135,
+      "O3 AVERAGE": 62.045
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 308.463,
+      "NO AVERAGE": 0.96,
+      "NO2 AVERAGE": 6.403,
+      "SO2 AVERAGE": 4.503,
+      "O3 AVERAGE": 77.501
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 297.471,
+      "NO AVERAGE": 0.382,
+      "NO2 AVERAGE": 5.601,
+      "SO2 AVERAGE": 3.215,
+      "O3 AVERAGE": 88.672
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 287.209,
+      "NO AVERAGE": 0.809,
+      "NO2 AVERAGE": 5.658,
+      "SO2 AVERAGE": 2.619,
+      "O3 AVERAGE": 88.489
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 268.525,
+      "NO AVERAGE": 0.714,
+      "NO2 AVERAGE": 5.462,
+      "SO2 AVERAGE": 2.993,
+      "O3 AVERAGE": 91.878
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 253.472,
+      "NO AVERAGE": 1.433,
+      "NO2 AVERAGE": 5.539,
+      "SO2 AVERAGE": 4.206,
+      "O3 AVERAGE": 88.362
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 237.926,
+      "NO AVERAGE": 0.979,
+      "NO2 AVERAGE": 6.186,
+      "SO2 AVERAGE": 4.202,
+      "O3 AVERAGE": 92.887
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 266.148,
+      "NO AVERAGE": 0.156,
+      "NO2 AVERAGE": 8.443,
+      "SO2 AVERAGE": 3.503,
+      "O3 AVERAGE": 76.723
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 287.335,
+      "NO AVERAGE": 0.753,
+      "NO2 AVERAGE": 10.873,
+      "SO2 AVERAGE": 3.931,
+      "O3 AVERAGE": 61.331
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 322.851,
+      "NO AVERAGE": 0.957,
+      "NO2 AVERAGE": 12.743,
+      "SO2 AVERAGE": 3.692,
+      "O3 AVERAGE": 46.491
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 301.541,
+      "NO AVERAGE": 0.837,
+      "NO2 AVERAGE": 12.927,
+      "SO2 AVERAGE": 4.046,
+      "O3 AVERAGE": 41.622
+    }
+  ],
+  "2018": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 280.349,
+      "NO AVERAGE": 0.965,
+      "NO2 AVERAGE": 12.507,
+      "SO2 AVERAGE": 4.454,
+      "O3 AVERAGE": 42.876
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 243.239,
+      "NO AVERAGE": 0.532,
+      "NO2 AVERAGE": 8.231,
+      "SO2 AVERAGE": 3.101,
+      "O3 AVERAGE": 52.092
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 240.224,
+      "NO AVERAGE": 0.531,
+      "NO2 AVERAGE": 8.111,
+      "SO2 AVERAGE": 2.955,
+      "O3 AVERAGE": 67.224
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 237.543,
+      "NO AVERAGE": 0.611,
+      "NO2 AVERAGE": 9.055,
+      "SO2 AVERAGE": 2.854,
+      "O3 AVERAGE": 74.472
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 193.566,
+      "NO AVERAGE": 0.407,
+      "NO2 AVERAGE": 7.102,
+      "SO2 AVERAGE": 2.111,
+      "O3 AVERAGE": 79.379
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 177.649,
+      "NO AVERAGE": 0.328,
+      "NO2 AVERAGE": 6.515,
+      "SO2 AVERAGE": 2.404,
+      "O3 AVERAGE": 82.108
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 186.813,
+      "NO AVERAGE": 0.312,
+      "NO2 AVERAGE": 6.076,
+      "SO2 AVERAGE": 2.144,
+      "O3 AVERAGE": 86.841
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 203.575,
+      "NO AVERAGE": 0.327,
+      "NO2 AVERAGE": 6.813,
+      "SO2 AVERAGE": 2.728,
+      "O3 AVERAGE": 85.973
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 208.797,
+      "NO AVERAGE": 0.311,
+      "NO2 AVERAGE": 6.471,
+      "SO2 AVERAGE": 2.774,
+      "O3 AVERAGE": 82.023
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 230.541,
+      "NO AVERAGE": 0.458,
+      "NO2 AVERAGE": 8.115,
+      "SO2 AVERAGE": 3.455,
+      "O3 AVERAGE": 72.233
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 236.417,
+      "NO AVERAGE": 0.558,
+      "NO2 AVERAGE": 9.501,
+      "SO2 AVERAGE": 3.711,
+      "O3 AVERAGE": 50.214
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 275.016,
+      "NO AVERAGE": 0.766,
+      "NO2 AVERAGE": 10.618,
+      "SO2 AVERAGE": 4.651,
+      "O3 AVERAGE": 43.438
+    }
+  ],
+  "2019": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 189.251,
+      "NO AVERAGE": 0.818,
+      "NO2 AVERAGE": 11.518,
+      "SO2 AVERAGE": 4.689,
+      "O3 AVERAGE": 52.948
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 188.761,
+      "NO AVERAGE": 0.667,
+      "NO2 AVERAGE": 9.776,
+      "SO2 AVERAGE": 4.883,
+      "O3 AVERAGE": 64.764
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 176.974,
+      "NO AVERAGE": 0.624,
+      "NO2 AVERAGE": 8.564,
+      "SO2 AVERAGE": 4.115,
+      "O3 AVERAGE": 75.933
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 165.149,
+      "NO AVERAGE": 0.553,
+      "NO2 AVERAGE": 7.633,
+      "SO2 AVERAGE": 3.167,
+      "O3 AVERAGE": 76.711
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 142.553,
+      "NO AVERAGE": 0.371,
+      "NO2 AVERAGE": 6.385,
+      "SO2 AVERAGE": 2.662,
+      "O3 AVERAGE": 80.859
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 144.639,
+      "NO AVERAGE": 0.383,
+      "NO2 AVERAGE": 6.838,
+      "SO2 AVERAGE": 2.291,
+      "O3 AVERAGE": 86.874
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 136.168,
+      "NO AVERAGE": 0.307,
+      "NO2 AVERAGE": 5.422,
+      "SO2 AVERAGE": 2.901,
+      "O3 AVERAGE": 94.478
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 150.929,
+      "NO AVERAGE": 0.267,
+      "NO2 AVERAGE": 4.997,
+      "SO2 AVERAGE": 3.809,
+      "O3 AVERAGE": 103.81
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 150.031,
+      "NO AVERAGE": 0.348,
+      "NO2 AVERAGE": 6.233,
+      "SO2 AVERAGE": 3.781,
+      "O3 AVERAGE": 89.636
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 159.182,
+      "NO AVERAGE": 0.551,
+      "NO2 AVERAGE": 9.263,
+      "SO2 AVERAGE": 4.409,
+      "O3 AVERAGE": 75.445
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 158.112,
+      "NO AVERAGE": 0.444,
+      "NO2 AVERAGE": 7.881,
+      "SO2 AVERAGE": 3.032,
+      "O3 AVERAGE": 57.441
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 197.871,
+      "NO AVERAGE": 0.853,
+      "NO2 AVERAGE": 10.509,
+      "SO2 AVERAGE": 4.304,
+      "O3 AVERAGE": 44.919
+    }
+  ],
+  "2020": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 220.275,
+      "NO AVERAGE": 0.862,
+      "NO2 AVERAGE": 12.475,
+      "SO2 AVERAGE": 4.096,
+      "O3 AVERAGE": 53.338
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 198.304,
+      "NO AVERAGE": 0.624,
+      "NO2 AVERAGE": 9.163,
+      "SO2 AVERAGE": 2.753,
+      "O3 AVERAGE": 63.891
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 193.482,
+      "NO AVERAGE": 0.404,
+      "NO2 AVERAGE": 5.537,
+      "SO2 AVERAGE": 2.172,
+      "O3 AVERAGE": 69.905
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 169.154,
+      "NO AVERAGE": 0.314,
+      "NO2 AVERAGE": 4.548,
+      "SO2 AVERAGE": 1.912,
+      "O3 AVERAGE": 79.281
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 152.913,
+      "NO AVERAGE": 0.297,
+      "NO2 AVERAGE": 4.626,
+      "SO2 AVERAGE": 1.795,
+      "O3 AVERAGE": 84.284
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 135.593,
+      "NO AVERAGE": 0.283,
+      "NO2 AVERAGE": 4.611,
+      "SO2 AVERAGE": 1.452,
+      "O3 AVERAGE": 83.146
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 132.983,
+      "NO AVERAGE": 0.244,
+      "NO2 AVERAGE": 4.686,
+      "SO2 AVERAGE": 1.833,
+      "O3 AVERAGE": 92.489
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 142.281,
+      "NO AVERAGE": 0.241,
+      "NO2 AVERAGE": 4.839,
+      "SO2 AVERAGE": 1.802,
+      "O3 AVERAGE": 90.953
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 150.363,
+      "NO AVERAGE": 0.297,
+      "NO2 AVERAGE": 5.727,
+      "SO2 AVERAGE": 2.266,
+      "O3 AVERAGE": 87.024
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 173.581,
+      "NO AVERAGE": 0.415,
+      "NO2 AVERAGE": 7.541,
+      "SO2 AVERAGE": 2.051,
+      "O3 AVERAGE": 63.824
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 206.994,
+      "NO AVERAGE": 0.862,
+      "NO2 AVERAGE": 11.847,
+      "SO2 AVERAGE": 3.121,
+      "O3 AVERAGE": 37.321
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 196.959,
+      "NO AVERAGE": 0.906,
+      "NO2 AVERAGE": 11.021,
+      "SO2 AVERAGE": 2.641,
+      "O3 AVERAGE": 38.351
+    }
+  ],
+  "2021": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 233.141,
+      "NO AVERAGE": 0.941,
+      "NO2 AVERAGE": 12.991,
+      "SO2 AVERAGE": 4.592,
+      "O3 AVERAGE": 42.285
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 251.689,
+      "NO AVERAGE": 1.154,
+      "NO2 AVERAGE": 14.242,
+      "SO2 AVERAGE": 5.173,
+      "O3 AVERAGE": 46.139
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 234.599,
+      "NO AVERAGE": 0.744,
+      "NO2 AVERAGE": 10.471,
+      "SO2 AVERAGE": 3.846,
+      "O3 AVERAGE": 57.884
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 204.531,
+      "NO AVERAGE": 0.713,
+      "NO2 AVERAGE": 9.739,
+      "SO2 AVERAGE": 3.361,
+      "O3 AVERAGE": 64.181
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 181.152,
+      "NO AVERAGE": 0.518,
+      "NO2 AVERAGE": 8.624,
+      "SO2 AVERAGE": 2.763,
+      "O3 AVERAGE": 70.912
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 204.693,
+      "NO AVERAGE": 0.521,
+      "NO2 AVERAGE": 8.739,
+      "SO2 AVERAGE": 2.746,
+      "O3 AVERAGE": 76.081
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 166.351,
+      "NO AVERAGE": 0.451,
+      "NO2 AVERAGE": 8.354,
+      "SO2 AVERAGE": 3.203,
+      "O3 AVERAGE": 83.161
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 205.945,
+      "NO AVERAGE": 0.414,
+      "NO2 AVERAGE": 8.724,
+      "SO2 AVERAGE": 3.595,
+      "O3 AVERAGE": 83.749
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 215.824,
+      "NO AVERAGE": 0.511,
+      "NO2 AVERAGE": 9.735,
+      "SO2 AVERAGE": 3.957,
+      "O3 AVERAGE": 69.421
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 238.115,
+      "NO AVERAGE": 0.702,
+      "NO2 AVERAGE": 11.105,
+      "SO2 AVERAGE": 3.766,
+      "O3 AVERAGE": 48.385
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 217.912,
+      "NO AVERAGE": 1.014,
+      "NO2 AVERAGE": 14.682,
+      "SO2 AVERAGE": 4.571,
+      "O3 AVERAGE": 38.588
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 233.066,
+      "NO AVERAGE": 1.143,
+      "NO2 AVERAGE": 13.241,
+      "SO2 AVERAGE": 4.316,
+      "O3 AVERAGE": 36.567
+    }
+  ],
+  "2022": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 168.418,
+      "NO AVERAGE": 0.156,
+      "NO2 AVERAGE": 3.157,
+      "SO2 AVERAGE": 1.265,
+      "O3 AVERAGE": 63.471
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 199.328,
+      "NO AVERAGE": 0.946,
+      "NO2 AVERAGE": 10.186,
+      "SO2 AVERAGE": 3.039,
+      "O3 AVERAGE": 55.686
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 227.077,
+      "NO AVERAGE": 0.877,
+      "NO2 AVERAGE": 11.243,
+      "SO2 AVERAGE": 3.459,
+      "O3 AVERAGE": 63.727
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 204.397,
+      "NO AVERAGE": 0.914,
+      "NO2 AVERAGE": 10.837,
+      "SO2 AVERAGE": 2.496,
+      "O3 AVERAGE": 66.369
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 177.223,
+      "NO AVERAGE": 0.771,
+      "NO2 AVERAGE": 10.364,
+      "SO2 AVERAGE": 2.423,
+      "O3 AVERAGE": 69.681
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 177.343,
+      "NO AVERAGE": 0.547,
+      "NO2 AVERAGE": 8.403,
+      "SO2 AVERAGE": 2.136,
+      "O3 AVERAGE": 73.102
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 172.017,
+      "NO AVERAGE": 0.469,
+      "NO2 AVERAGE": 8.469,
+      "SO2 AVERAGE": 2.652,
+      "O3 AVERAGE": 79.947
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 186.835,
+      "NO AVERAGE": 0.467,
+      "NO2 AVERAGE": 9.741,
+      "SO2 AVERAGE": 2.213,
+      "O3 AVERAGE": 75.678
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 168.496,
+      "NO AVERAGE": 0.598,
+      "NO2 AVERAGE": 9.775,
+      "SO2 AVERAGE": 2.523,
+      "O3 AVERAGE": 68.113
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 192.175,
+      "NO AVERAGE": 0.695,
+      "NO2 AVERAGE": 11.273,
+      "SO2 AVERAGE": 3.271,
+      "O3 AVERAGE": 65.436
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 202.094,
+      "NO AVERAGE": 0.759,
+      "NO2 AVERAGE": 10.442,
+      "SO2 AVERAGE": 3.283,
+      "O3 AVERAGE": 53.981
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 250.891,
+      "NO AVERAGE": 1.803,
+      "NO2 AVERAGE": 16.158,
+      "SO2 AVERAGE": 4.111,
+      "O3 AVERAGE": 38.396
+    }
+  ],
+  "2023": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 241.317,
+      "NO AVERAGE": 0.968,
+      "NO2 AVERAGE": 12.568,
+      "SO2 AVERAGE": 3.978,
+      "O3 AVERAGE": 50.145
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 232.196,
+      "NO AVERAGE": 0.935,
+      "NO2 AVERAGE": 12.571,
+      "SO2 AVERAGE": 4.285,
+      "O3 AVERAGE": 65.032
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 202.178,
+      "NO AVERAGE": 0.852,
+      "NO2 AVERAGE": 10.151,
+      "SO2 AVERAGE": 2.546,
+      "O3 AVERAGE": 58.198
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 187.767,
+      "NO AVERAGE": 0.603,
+      "NO2 AVERAGE": 7.576,
+      "SO2 AVERAGE": 3.221,
+      "O3 AVERAGE": 63.838
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 195.938,
+      "NO AVERAGE": 0.644,
+      "NO2 AVERAGE": 8.256,
+      "SO2 AVERAGE": 2.696,
+      "O3 AVERAGE": 60.374
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 197.712,
+      "NO AVERAGE": 0.593,
+      "NO2 AVERAGE": 7.837,
+      "SO2 AVERAGE": 2.368,
+      "O3 AVERAGE": 68.855
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 192.886,
+      "NO AVERAGE": 0.522,
+      "NO2 AVERAGE": 8.865,
+      "SO2 AVERAGE": 2.891,
+      "O3 AVERAGE": 79.641
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 196.539,
+      "NO AVERAGE": 0.536,
+      "NO2 AVERAGE": 10.237,
+      "SO2 AVERAGE": 2.841,
+      "O3 AVERAGE": 74.429
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 207.949,
+      "NO AVERAGE": 0.757,
+      "NO2 AVERAGE": 10.846,
+      "SO2 AVERAGE": 3.602,
+      "O3 AVERAGE": 60.599
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 226.581,
+      "NO AVERAGE": 0.835,
+      "NO2 AVERAGE": 9.899,
+      "SO2 AVERAGE": 3.848,
+      "O3 AVERAGE": 49.991
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 216.228,
+      "NO AVERAGE": 1.439,
+      "NO2 AVERAGE": 11.851,
+      "SO2 AVERAGE": 4.242,
+      "O3 AVERAGE": 37.421
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 288.137,
+      "NO AVERAGE": 2.171,
+      "NO2 AVERAGE": 13.757,
+      "SO2 AVERAGE": 5.995,
+      "O3 AVERAGE": 28.065
+    }
+  ],
+  "2024": [
+    {
+      "MONTH": "January",
+      "CO AVERAGE": 270.258,
+      "NO AVERAGE": 1.961,
+      "NO2 AVERAGE": 12.572,
+      "SO2 AVERAGE": 6.464,
+      "O3 AVERAGE": 34.962
+    },
+    {
+      "MONTH": "February",
+      "CO AVERAGE": 266.616,
+      "NO AVERAGE": 1.385,
+      "NO2 AVERAGE": 12.612,
+      "SO2 AVERAGE": 6.318,
+      "O3 AVERAGE": 43.911
+    },
+    {
+      "MONTH": "March",
+      "CO AVERAGE": 239.779,
+      "NO AVERAGE": 0.761,
+      "NO2 AVERAGE": 9.665,
+      "SO2 AVERAGE": 3.384,
+      "O3 AVERAGE": 63.629
+    },
+    {
+      "MONTH": "April",
+      "CO AVERAGE": 183.902,
+      "NO AVERAGE": 0.854,
+      "NO2 AVERAGE": 9.476,
+      "SO2 AVERAGE": 3.305,
+      "O3 AVERAGE": 75.912
+    },
+    {
+      "MONTH": "May",
+      "CO AVERAGE": 162.513,
+      "NO AVERAGE": 0.607,
+      "NO2 AVERAGE": 7.654,
+      "SO2 AVERAGE": 2.813,
+      "O3 AVERAGE": 69.119
+    },
+    {
+      "MONTH": "June",
+      "CO AVERAGE": 155.442,
+      "NO AVERAGE": 0.579,
+      "NO2 AVERAGE": 8.472,
+      "SO2 AVERAGE": 2.755,
+      "O3 AVERAGE": 72.907
+    },
+    {
+      "MONTH": "July",
+      "CO AVERAGE": 159.329,
+      "NO AVERAGE": 0.492,
+      "NO2 AVERAGE": 8.182,
+      "SO2 AVERAGE": 3.175,
+      "O3 AVERAGE": 88.438
+    },
+    {
+      "MONTH": "August",
+      "CO AVERAGE": 206.336,
+      "NO AVERAGE": 0.478,
+      "NO2 AVERAGE": 8.519,
+      "SO2 AVERAGE": 2.984,
+      "O3 AVERAGE": 84.205
+    },
+    {
+      "MONTH": "September",
+      "CO AVERAGE": 192.657,
+      "NO AVERAGE": 0.605,
+      "NO2 AVERAGE": 9.433,
+      "SO2 AVERAGE": 3.152,
+      "O3 AVERAGE": 73.161
+    },
+    {
+      "MONTH": "October",
+      "CO AVERAGE": 190.474,
+      "NO AVERAGE": 0.755,
+      "NO2 AVERAGE": 11.036,
+      "SO2 AVERAGE": 4.171,
+      "O3 AVERAGE": 67.751
+    },
+    {
+      "MONTH": "November",
+      "CO AVERAGE": 222.909,
+      "NO AVERAGE": 1.181,
+      "NO2 AVERAGE": 14.409,
+      "SO2 AVERAGE": 4.428,
+      "O3 AVERAGE": 44.142
+    },
+    {
+      "MONTH": "December",
+      "CO AVERAGE": 231.229,
+      "NO AVERAGE": 1.258,
+      "NO2 AVERAGE": 14.299,
+      "SO2 AVERAGE": 4.474,
+      "O3 AVERAGE": 45.878
+    }
+  ]
+}
