@@ -13,6 +13,11 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="toolbarStyle">@style/CustomToolbar</item>
+
+        <item name="android:windowBackground">@drawable/intro_thesssense</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+
     </style>
 
     <style name="Theme.ThesSense.NoActionBar">

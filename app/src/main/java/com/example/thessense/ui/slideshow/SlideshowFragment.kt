@@ -190,7 +190,7 @@ class SlideshowFragment : Fragment(), OnMapReadyCallback {
             centerMarker = map.addMarker(
                 MarkerOptions()
                     .position(center)
-                    .title("Ποιότητα Αέρα - $selectedMonth/$selectedYear")
+                    .title("Ποιότητα")
                     .snippet(infoText)
                     .visible(true)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))

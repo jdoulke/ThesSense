@@ -1,14 +1,10 @@
 package com.example.thessense.ui.gallery
 
-import android.R
 import android.animation.ValueAnimator
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.example.thessense.databinding.FragmentGalleryBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -19,7 +15,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
 import android.widget.FrameLayout
-import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.NumberPicker
 import android.widget.TextView
@@ -28,7 +23,6 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.json.JSONObject
 import java.io.InputStream
-import java.lang.reflect.Field
 
 class GalleryFragment : Fragment(), OnMapReadyCallback {
 
