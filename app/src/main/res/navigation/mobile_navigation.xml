@@ -22,4 +22,10 @@
         android:name="com.example.thessense.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_air"
+        android:name="com.example.thessense.ui.aircompare.AirFragment"
+        android:label="@string/menu_air"
+        tools:layout="@layout/fragment_air" />
 </navigation>

@@ -66,6 +66,11 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.title = "Ποιότητα Αέρα"
                     navController.navigate(R.id.nav_slideshow)
                 }
+                R.id.nav_air -> {
+                    supportActionBar?.title = "Σύγκριση Αέρα"
+                    navController.navigate(R.id.nav_air)
+                }
+
                 else -> {
                     Toast.makeText(this, "Unknown item selected", Toast.LENGTH_SHORT).show()
                 }

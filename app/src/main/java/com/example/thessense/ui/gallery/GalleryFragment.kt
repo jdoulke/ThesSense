@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.json.JSONObject
 import java.io.InputStream
+import android.util.Log
 
 class GalleryFragment : Fragment(), OnMapReadyCallback {
 
@@ -147,6 +148,45 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
         return json
     }
 
+    private fun parseValue(input: String): Float {
+        val clean = input.replace(",", ".")
+            .replace(Regex("[^0-9.]"), "")
+        return clean.toFloatOrNull() ?: 0f
+    }
+
+    private fun calculateWQI(tholotita: Float, agogimotita: Float, sygkentrosi: Float, ypoleimmatiko: Float): Int {
+        var score = 0f
+        var totalWeight = 0f
+
+        val tholotitaScore = when {
+            tholotita <= 0.25 -> 100f
+            tholotita <= 0.5 -> 75f
+            tholotita <= 1 -> 50f
+            else -> 25f
+        }
+        score += tholotitaScore * 0.3f
+        totalWeight += 0.3f
+
+        val agogimotitaScore = when {
+            agogimotita <= 400 -> 100f
+            agogimotita <= 800 -> 75f
+            agogimotita <= 1200 -> 50f
+            else -> 25f
+        }
+        score += agogimotitaScore * 0.25f
+        totalWeight += 0.25f
+
+        val sygkentrosiScore = if (sygkentrosi in 7.0..8.5) 100f else 50f
+        score += sygkentrosiScore * 0.25f
+        totalWeight += 0.25f
+
+        val ypoleimmatikoScore = if (ypoleimmatiko in 0.3..0.5) 100f else 50f
+        score += ypoleimmatikoScore * 0.2f
+        totalWeight += 0.2f
+
+        return (score / totalWeight).toInt()
+    }
+
     private fun addMarkersFromJson() {
         googleMap?.let { map ->
             map.clear()
@@ -183,12 +223,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val ekklisiesLocation = LatLng(40.6328, 22.9677)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(ekklisiesLocation)
                                 .title("40 Εκκλησίες")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -206,12 +255,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val analipsiLocation = LatLng(40.6051, 22.9598)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(analipsiLocation)
                                 .title("Ανάληψη")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -229,12 +287,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val anopoliLocation = LatLng(40.6419, 22.9460)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(anopoliLocation)
                                 .title("Άνω Πόλη")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -252,12 +319,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val anotoumpaLocation = LatLng(40.6179, 22.9756)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(anotoumpaLocation)
                                 .title("Άνω Τούμπα")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -275,12 +351,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val dethhanthLocation = LatLng(40.6264, 22.9526)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(dethhanthLocation)
                                 .title("ΔΕΘ-ΧΑΝΘ")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -298,12 +383,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val harilaouLocation = LatLng(40.6001, 22.9702)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(harilaouLocation)
                                 .title("Χαριλάου")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -321,12 +415,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val katotoumpaLocation = LatLng(40.6110, 22.9657)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(katotoumpaLocation)
                                 .title("Κάτω Τούμπα")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -344,12 +447,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val kentropolisLocation = LatLng(40.6325, 22.9407)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(kentropolisLocation)
                                 .title("Κέντρο Πόλης")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -367,12 +479,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val neaparaliaLocation = LatLng(40.6149, 22.9518)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(neaparaliaLocation)
                                 .title("Νέα Παραλία")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -390,12 +511,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val ntepoLocation = LatLng(40.5935, 22.9593)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(ntepoLocation)
                                 .title("Ντεπώ")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -413,12 +543,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val panagiaLocation = LatLng(40.6467, 22.9383)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(panagiaLocation)
                                 .title("Παναγίας Φανερωμένης")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -436,12 +575,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val plateiaLocation = LatLng(40.6407, 22.9347)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(plateiaLocation)
                                 .title("Πλατεία Δημοκρατίας")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -459,12 +607,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val sfageiaLocation = LatLng(40.6418, 22.9105)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(sfageiaLocation)
                                 .title("Σφαγεία")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -482,12 +639,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val sholiLocation = LatLng(40.6136, 22.9536)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(sholiLocation)
                                 .title("Σχολή Τυφλών")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -505,12 +671,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val triandriaLocation = LatLng(40.6240, 22.9734)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(triandriaLocation)
                                 .title("Τριανδρία")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
@@ -528,12 +703,21 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
                         val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
                         val ksirokriniLocation = LatLng(40.6484, 22.9285)
+
+                        //Υπολογισμός WQI
+                        val tholotitaValue = parseValue(tholotita)
+                        val agogimotitaValue = Regex("""\d+(\.\d+)?""").find(agogimotita)?.value?.toFloatOrNull() ?: 0f
+                        val sygkentrosiValue = parseValue(sygkentrosi)
+                        val ypoleimmatikoValue = parseValue(ypoleimmatiko)
+                        val wqi = calculateWQI(tholotitaValue, agogimotitaValue, sygkentrosiValue, ypoleimmatikoValue)
+                        val hue = 120f * (wqi / 100f)
+
                         map.addMarker(
                             MarkerOptions()
                                 .position(ksirokriniLocation)
                                 .title("Ξηροκρήνη")
                                 .snippet(snippet)
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(hue))
                         )
                     }
                 }
