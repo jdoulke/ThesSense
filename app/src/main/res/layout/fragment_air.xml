@@ -131,12 +131,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≤ 10.000 μg/m³"
-                            android:textSize="18sp"
+                            android:text="Προέρχεται από ατελή καύση καυσίμων."
+                            android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="40dp"
+                            android:layout_marginTop="30dp"
                             android:layout_marginBottom="24dp"
-                            android:fontFamily="@font/lexend_bold"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_medium"
                             android:textColor="@color/thess" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -170,13 +171,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≤ 200 μg/m³"
-                            android:textSize="20sp"
+                            android:text="Παράγεται σε υψηλές θερμοκρασίες κάυσης."
+                            android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="40dp"
+                            android:layout_marginTop="30dp"
                             android:layout_marginBottom="24dp"
                             android:gravity="center"
-                            android:fontFamily="@font/lexend_bold"
+                            android:fontFamily="@font/lexend_medium"
                             android:textColor="@color/thess" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -210,13 +211,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≤ 40 μg/m³"
-                            android:textSize="20sp"
+                            android:text="Σχηματίζεται από την οξείδωση του ΝΟ στην ατμόσφαιρα."
+                            android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="40dp"
+                            android:layout_marginTop="30dp"
                             android:layout_marginBottom="24dp"
                             android:gravity="center"
-                            android:fontFamily="@font/lexend_bold"
+                            android:fontFamily="@font/lexend_medium"
                             android:textColor="@color/thess" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -250,13 +251,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≤ 20 μg/m³"
-                            android:textSize="19sp"
+                            android:text="Εκλύεται από καύση άνθρακα ή πετρελαίου\nμε θείο."
+                            android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="40dp"
+                            android:layout_marginTop="30dp"
                             android:layout_marginBottom="24dp"
                             android:gravity="center"
-                            android:fontFamily="@font/lexend_bold"
+                            android:fontFamily="@font/lexend_medium"
                             android:textColor="@color/thess" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -290,13 +291,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≤ 100 μg/m³"
-                            android:textSize="20sp"
+                            android:text="Δημιουργείται από φωτοχημικές αντιδράσεις."
+                            android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="40dp"
+                            android:layout_marginTop="30dp"
                             android:layout_marginBottom="24dp"
                             android:gravity="center"
-                            android:fontFamily="@font/lexend_bold"
+                            android:fontFamily="@font/lexend_medium"
                             android:textColor="@color/thess" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
