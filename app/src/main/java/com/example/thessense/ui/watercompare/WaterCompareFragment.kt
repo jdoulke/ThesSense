@@ -19,33 +19,55 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.InputStream
+import java.util.Locale
 
 class WaterCompareFragment : Fragment() {
 
     private var _binding: FragmentWaterBinding? = null
     private val binding get() = _binding!!
 
-    // State variables
     private var selectedArea: String = ""
     private var selectedElement: String = ""
     private var selectedYear1: Int = 2023
     private var selectedMonth1: Int = 1
     private var selectedYear2: Int = 2024
     private var selectedMonth2: Int = 1
-
     private lateinit var waterData: JSONObject
 
-    // Greek months (label & file search)
-    private val monthNames = arrayOf(
-        "Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος",
-        "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος",
-        "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"
+    private val elementNamesMap = mapOf(
+        "Θολότητα NTU" to "Turbidity NTU",
+        "Αργίλιο" to "Aluminum",
+        "Αγωγιμότητα" to "Conductivity",
+        "Υπολειμματικό χλώριο" to "Residual Chlorine"
     )
+    private val elementNamesReverseMap = elementNamesMap.entries.associate { (k, v) -> v to k }
 
-    // Τα στοιχεία που συγκρίνεις (μπορείς να προσθέσεις ό,τι άλλο θες)
-    private val elementNames = arrayOf(
-        "Θολότητα NTU", "Αργίλιο", "Αγωγιμότητα", "Υπολειμματικό χλώριο"
+    private val elementNamesGreek = elementNamesMap.keys.toTypedArray()
+    private val elementNamesEnglish = elementNamesMap.values.toTypedArray()
+
+    private val monthNamesGreek by lazy { resources.getStringArray(R.array.months_gr) }
+    private val monthNamesEnglish by lazy { resources.getStringArray(R.array.months_en) }
+
+    private val areaNamesMap = mapOf(
+        "40 Εκκλησίες" to "40 Ekklisies",
+        "Ανάληψη" to "Analipsi",
+        "ΔΕΘ-ΧΑΝΘ" to "DETH-XANTH",
+        "Κέντρο πόλης" to "Kentri Polis",
+        "Νέα Παραλία" to "Nea Paralia",
+        "Ντεπώ" to "Depo",
+        "Ξηροκρήνη" to "Xirokrini",
+        "Παναγία Φανερωμένη" to "Panagia Faneromeni",
+        "Πλατεία Δημοκρατίας" to "Plateia Dimokratias",
+        "Σχολή Τυφλών" to "Scholi Tyflon",
+        "Άνω Πόλη" to "Ano Poli",
+        "Άνω Τούμπα" to "Ano Toumpa",
+        "Κάτω Τούμπα" to "Kato Toumpa",
+        "Κέντρο Πόλης" to "Kentro Polis",
+        "Σφαγεία" to "Sfageia",
+        "Τριανδρία" to "Triandria",
+        "Χαριλάου" to "Xarilaou"
     )
+    private val areaNamesReverseMap = areaNamesMap.entries.associate { (k, v) -> v to k }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,26 +76,28 @@ class WaterCompareFragment : Fragment() {
         _binding = FragmentWaterBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        // 1. Load JSON data
         val jsonStr = loadJSONFromAsset("water_data.json")
         waterData = JSONObject(jsonStr)
 
-        // 2. Περιοχές από το JSON
-        val areaList = waterData.keys().asSequence().toList().sorted()
+        val currentLang = Locale.getDefault().language
+        val areaListGreek = waterData.keys().asSequence().toList().sorted()
+        val areaListEnglish = areaListGreek.map { areaNamesMap[it] ?: it }
+
+        val elementNames = if (currentLang == "el") elementNamesGreek else elementNamesEnglish
+        val monthNames = if (currentLang == "el") monthNamesGreek else monthNamesEnglish
+        val areaList = if (currentLang == "el") areaListGreek else areaListEnglish
+
         val areaAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, areaList)
         areaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.areaSpinner.adapter = areaAdapter
 
-        // 3. Στοιχεία για επιλογή (το elementSpinner)
         val elementAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, elementNames)
         elementAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.elementSpinner.adapter = elementAdapter
 
-        // 4. Defaults
         selectedArea = areaList.first()
         selectedElement = elementNames.first()
 
-        // 5. Listeners για spinners
         binding.areaSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 selectedArea = areaList[position]
@@ -89,7 +113,6 @@ class WaterCompareFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
-        // 6. Year & Month pickers (4 pickers συνολικά)
         binding.year1Picker.minValue = 2017
         binding.year1Picker.maxValue = 2024
         binding.year1Picker.value = selectedYear1
@@ -106,7 +129,6 @@ class WaterCompareFragment : Fragment() {
         binding.month2Picker.displayedValues = monthNames
         binding.month2Picker.value = selectedMonth2
 
-        // Listeners στα pickers
         binding.year1Picker.setOnValueChangedListener { _, _, newVal ->
             selectedYear1 = newVal
             updateComparison()
@@ -124,7 +146,6 @@ class WaterCompareFragment : Fragment() {
             updateComparison()
         }
 
-        // First update
         updateComparison()
 
         return root
@@ -142,22 +163,23 @@ class WaterCompareFragment : Fragment() {
 
     private fun updateComparison() {
         try {
-            // Απόκτησε τα δεδομένα για την περιοχή
-            val areaArray = waterData.optJSONArray(selectedArea) ?: return
+            val currentLang = Locale.getDefault().language
+            val selectedAreaGreek = if (currentLang == "el") selectedArea else areaNamesReverseMap[selectedArea] ?: selectedArea
+            val areaArray = waterData.optJSONArray(selectedAreaGreek) ?: return
 
-            // Month string (π.χ. "Ιανουάριος")
-            val monthStr1 = monthNames[selectedMonth1 - 1]
-            val monthStr2 = monthNames[selectedMonth2 - 1]
+            val monthNames = if (currentLang == "el") monthNamesGreek else monthNamesEnglish
+            val monthStr1 = monthNamesGreek[selectedMonth1 - 1]
+            val monthStr2 = monthNamesGreek[selectedMonth2 - 1]
 
-            // Βρες το αντικείμενο του κάθε μήνα-έτους
+            val selectedElementGreek = if (currentLang == "el") selectedElement else elementNamesReverseMap[selectedElement] ?: selectedElement
+
             val obj1 = findEntry(areaArray, selectedYear1, monthStr1)
             val obj2 = findEntry(areaArray, selectedYear2, monthStr2)
             if (obj1 == null || obj2 == null) return
 
-            val value1 = parseNumber(obj1.optString(selectedElement))
-            val value2 = parseNumber(obj2.optString(selectedElement))
+            val value1 = parseNumber(obj1.optString(selectedElementGreek))
+            val value2 = parseNumber(obj2.optString(selectedElementGreek))
 
-            // Chart entries (μία μπάρα ανά περίοδο)
             val entries1 = listOf(BarEntry(0f, value1))
             val entries2 = listOf(BarEntry(1f, value2))
 
@@ -179,7 +201,7 @@ class WaterCompareFragment : Fragment() {
                 isGranularityEnabled = true
                 setDrawGridLines(false)
                 position = com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM
-                valueFormatter = IndexAxisValueFormatter(arrayOf("Περίοδος 1", "Περίοδος 2"))
+                valueFormatter = IndexAxisValueFormatter(arrayOf("Period 1", "Period 2"))
                 labelRotationAngle = 0f
                 axisMinimum = -0.5f
                 axisMaximum = 1.5f
@@ -205,7 +227,6 @@ class WaterCompareFragment : Fragment() {
             chart.description.isEnabled = false
             chart.legend.isEnabled = true
 
-            // Formatter
             val floatFormatter = object : ValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
                     return String.format("%.2f", value)
@@ -222,7 +243,6 @@ class WaterCompareFragment : Fragment() {
             dataSet2.valueFormatter = floatFormatter
 
             chart.invalidate()
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -240,7 +260,6 @@ class WaterCompareFragment : Fragment() {
 
     private fun parseNumber(str: String?): Float {
         if (str.isNullOrBlank()) return 0f
-        // Αφαίρεση <, ΔΠ, κενά, σύμβολα, , --> .
         val clean = str.replace(Regex("[^0-9,\\.]"), "").replace(",", ".")
         return clean.toFloatOrNull() ?: 0f
     }

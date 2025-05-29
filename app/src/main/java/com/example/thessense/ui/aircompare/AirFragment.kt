@@ -16,6 +16,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import org.json.JSONObject
 import java.io.InputStream
+import java.util.Locale
 
 class AirFragment : Fragment() {
 
@@ -46,21 +47,23 @@ class AirFragment : Fragment() {
         year2Picker.maxValue = 2024
         year2Picker.value = selectedYear2
 
+
+        val months = if (Locale.getDefault().language == "el") {
+            resources.getStringArray(R.array.months_gr)
+        } else {
+            resources.getStringArray(R.array.months_en)
+        }
+
+        month1Picker.displayedValues = null
         month1Picker.minValue = 1
-        month1Picker.maxValue = 12
-        month1Picker.displayedValues = arrayOf(
-            "Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος",
-            "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος",
-            "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"
-        )
+        month1Picker.maxValue = months.size
+        month1Picker.displayedValues = months
         month1Picker.value = selectedMonth1
+
+        month2Picker.displayedValues = null
         month2Picker.minValue = 1
-        month2Picker.maxValue = 12
-        month2Picker.displayedValues = arrayOf(
-            "Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος",
-            "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος",
-            "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"
-        )
+        month2Picker.maxValue = months.size
+        month2Picker.displayedValues = months
         month2Picker.value = selectedMonth2
 
         updateComparison()

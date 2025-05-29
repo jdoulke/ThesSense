@@ -24,6 +24,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import org.json.JSONObject
 import java.io.InputStream
 import android.util.Log
+import com.example.thessense.R
+import java.util.Locale
 
 class GalleryFragment : Fragment(), OnMapReadyCallback {
 
@@ -61,12 +63,18 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
         yearPicker.maxValue = 2024
         yearPicker.value = 2020
 
+        val currentLang = Locale.getDefault().language
+        val months = if (currentLang == "el") {
+            resources.getStringArray(R.array.months_gr)
+        } else {
+            resources.getStringArray(R.array.months_en)
+        }
         monthPicker.minValue = 1
-        monthPicker.maxValue = 12
-        monthPicker.value = 1
-
-        val months = arrayOf("Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος")
+        monthPicker.maxValue = months.size
+        monthPicker.displayedValues = null
         monthPicker.displayedValues = months
+
+        monthPicker.value = selectedMonth
 
         yearPicker.setOnValueChangedListener { _, _, newVal ->
             selectedYear = newVal

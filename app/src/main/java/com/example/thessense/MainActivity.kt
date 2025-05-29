@@ -19,9 +19,12 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.example.thessense.databinding.ActivityMainBinding
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+        val langItem = findViewById<Toolbar>(R.id.toolbar).menu.findItem(R.id.action_language)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -95,8 +100,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val lang = getSharedPreferences("prefs", MODE_PRIVATE).getString("lang", "el")
+        val langItem = menu.findItem(R.id.action_language)
+        if (lang == "el") {
+            langItem.setIcon(R.drawable.ic_flag_greece)
+        } else {
+            langItem.setIcon(R.drawable.ic_flag_uk)
+        }
         return true
     }
 
@@ -105,6 +116,11 @@ class MainActivity : AppCompatActivity() {
             R.id.action_about -> {  // Your menu item ID
                 showAboutDialog()      // Call a function to show the popup
                 true
+            }
+            R.id.action_language -> {
+                val anchor = getToolbarMenuItemView(R.id.action_language) ?: findViewById(R.id.toolbar)
+                showLanguagePopup(anchor)
+                return true
             }
             else -> super.onOptionsItemSelected(item)
         }
@@ -122,4 +138,67 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    private fun showLanguagePopup(anchor: View) {
+        val popup = PopupMenu(this, anchor)
+        popup.menu.add(0, 1, 0, "🇬🇷  Ελληνικά (GR)")
+        popup.menu.add(0, 2, 1, "🇬🇧  English (EN)")
+        popup.setOnMenuItemClickListener {
+            when (it.itemId) {
+                1 -> setLocale("el")
+                2 -> setLocale("en")
+            }
+            true
+        }
+        // For icons to appear
+        try {
+            val fields = popup.javaClass.declaredFields
+            for (field in fields) {
+                if ("mPopup" == field.name) {
+                    field.isAccessible = true
+                    val menuPopupHelper = field.get(popup)
+                    val classPopupHelper = Class.forName(menuPopupHelper.javaClass.name)
+                    val setForceIcons = classPopupHelper.getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+                    setForceIcons.invoke(menuPopupHelper, true)
+                    break
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        popup.show()
+    }
+
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
+        prefs.edit().putString("lang", languageCode).apply()
+
+        recreate()
+    }
+
+    private fun getToolbarMenuItemView(menuItemId: Int): View? {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        for (i in 0 until toolbar.childCount) {
+            val child = toolbar.getChildAt(i)
+            if (child is androidx.appcompat.widget.ActionMenuView) {
+                for (j in 0 until child.childCount) {
+                    val item = child.getChildAt(j)
+                    if (item is androidx.appcompat.view.menu.ActionMenuItemView) {
+                        if (item.itemData?.itemId == menuItemId) {
+                            return item
+                        }
+                    }
+                }
+            }
+        }
+        return null
+    }
+
+
 }

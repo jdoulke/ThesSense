@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.NumberPicker
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.thessense.R
 import com.example.thessense.databinding.FragmentSlideshowBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import org.json.JSONObject
 import java.io.InputStream
+import java.util.Locale
 
 class SlideshowFragment : Fragment(), OnMapReadyCallback {
 
@@ -51,13 +53,17 @@ class SlideshowFragment : Fragment(), OnMapReadyCallback {
         yearPicker.maxValue = 2024
         yearPicker.value = selectedYear
 
+        val currentLang = Locale.getDefault().language
+        val months = if (currentLang == "el") {
+            resources.getStringArray(R.array.months_gr)
+        } else {
+            resources.getStringArray(R.array.months_en)
+        }
         monthPicker.minValue = 1
-        monthPicker.maxValue = 12
-        monthPicker.displayedValues = arrayOf(
-            "Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος",
-            "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος",
-            "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"
-        )
+        monthPicker.maxValue = months.size
+        monthPicker.displayedValues = null
+        monthPicker.displayedValues = months
+
         monthPicker.value = selectedMonth
 
         yearPicker.setOnValueChangedListener { _, _, newVal ->

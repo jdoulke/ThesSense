@@ -78,7 +78,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Κύριες αιτίες των αερίων:"
+            android:text="@string/air_data"
             android:textSize="21sp"
             android:fontFamily="@font/lexend_medium"
             android:layout_marginTop="24dp"

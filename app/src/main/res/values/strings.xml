@@ -24,8 +24,8 @@
     <string name="no2_desc">Σχηματίζεται από την οξείδωση του ΝΟ στην ατμόσφαιρα.</string>
     <string name="so2">Διοξείδιο του Θείου (SO₂)</string>
     <string name="so2_desc">Εκλύεται από καύση άνθρακα ή πετρελαίου\nμε θείο.</string>
-    <string name="o3_desc">"Όζον (Ο₃) \\n "</string>
-    <string name="o3">Δημιουργείται από φωτοχημικές αντιδράσεις.</string>
+    <string name="o3_desc">Δημιουργείται από φωτοχημικές αντιδράσεις.</string>
+    <string name="o3">"Όζον (Ο₃) "</string>
     <string name="app_desc">Η εφαρμογή ThessSense δημιουργήθηκε από τον Ιωάννη Δουλκερίδη και τον Ευστράτιο Δεληγεώργη. Τα δεδομένα που χρησιμοποιήθηκαν προέρχονται από το Thessaloniki Open Data Space.</string>
     <string name="water_limit">Ενδεικτικά όρια ποιότητας νερού:</string>
     <string name="turbidity">Θολότητα</string>
@@ -43,4 +43,34 @@
     <string name="aluminum_desc">Μεταλλικό στοιχείο που προστίθεται μερικές φορές κατά την επεξεργασία.</string>
     <string name="conductivity_desc">Μετρά τα διαλυμένα άλατα και ιόντα στο νερό.</string>
     <string name="residual_chlorine_desc">Εξασφαλίζει την υγιεινή απολύμανση του νερού.</string>
+    <string name="language">Αλλαγή Γλώσσας</string>
+    <string name="air_data">Κύριες αιτίες των αερίων:</string>
+    <string-array name="months_gr">
+        <item>Ιανουάριος</item>
+        <item>Φεβρουάριος</item>
+        <item>Μάρτιος</item>
+        <item>Απρίλιος</item>
+        <item>Μάιος</item>
+        <item>Ιούνιος</item>
+        <item>Ιούλιος</item>
+        <item>Αύγουστος</item>
+        <item>Σεπτέμβριος</item>
+        <item>Οκτώβριος</item>
+        <item>Νοέμβριος</item>
+        <item>Δεκέμβριος</item>
+    </string-array>
+    <string-array name="months_en">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 </resources>
