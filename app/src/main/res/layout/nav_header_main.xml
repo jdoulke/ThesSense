@@ -12,6 +12,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
+        android:id="@+id/uniLogo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ihu"

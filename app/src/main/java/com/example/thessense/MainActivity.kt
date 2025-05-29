@@ -1,5 +1,6 @@
 package com.example.thessense
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -8,6 +9,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -32,6 +34,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        val lang = prefs.getString("lang", "el") ?: "el"
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -56,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        updateHeaderLogo()
 
         // ThessSense title change
         setHomeTitle()
@@ -101,7 +111,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-        val lang = getSharedPreferences("prefs", MODE_PRIVATE).getString("lang", "el")
+
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        val lang = prefs.getString("lang", "el")
         val langItem = menu.findItem(R.id.action_language)
         if (lang == "el") {
             langItem.setIcon(R.drawable.ic_flag_greece)
@@ -176,12 +188,21 @@ class MainActivity : AppCompatActivity() {
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
 
-        val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
+
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
         prefs.edit().putString("lang", languageCode).apply()
+
+        val langItem = findViewById<Toolbar>(R.id.toolbar).menu.findItem(R.id.action_language)
+        if (languageCode == "el") {
+            langItem.setIcon(R.drawable.ic_flag_greece)
+        } else {
+            langItem.setIcon(R.drawable.ic_flag_uk)
+        }
 
         recreate()
     }
 
+    @SuppressLint("RestrictedApi")
     private fun getToolbarMenuItemView(menuItemId: Int): View? {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         for (i in 0 until toolbar.childCount) {
@@ -198,6 +219,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return null
+    }
+
+    private fun updateHeaderLogo() {
+        val headerView = binding.navView.getHeaderView(0)
+        val imageView = headerView.findViewById<ImageView>(R.id.uniLogo)
+        val lang = getSharedPreferences("settings", MODE_PRIVATE).getString("lang", "el")
+        if (lang == "el") {
+            imageView.setImageResource(R.drawable.ihu)
+        } else {
+            imageView.setImageResource(R.drawable.ihu_en)
+        }
     }
 
 
