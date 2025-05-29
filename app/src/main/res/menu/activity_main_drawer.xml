@@ -17,8 +17,12 @@
             android:icon="@drawable/ic_air"
             android:title="@string/menu_slideshow" />
         <item
+            android:id="@+id/nav_water"
+            android:icon="@drawable/ic_compare_water"
+            android:title="@string/menu_water" />
+        <item
             android:id="@+id/nav_air"
-            android:icon="@drawable/ic_air"
+            android:icon="@drawable/ic_compare_air"
             android:title="@string/menu_air" />
     </group>
 </menu>

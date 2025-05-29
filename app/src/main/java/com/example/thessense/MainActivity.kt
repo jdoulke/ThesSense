@@ -66,6 +66,10 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.title = "Ποιότητα Αέρα"
                     navController.navigate(R.id.nav_slideshow)
                 }
+                R.id.nav_water -> {
+                    supportActionBar?.title = "Σύγκριση Νερού"
+                    navController.navigate(R.id.nav_water)
+                }
                 R.id.nav_air -> {
                     supportActionBar?.title = "Σύγκριση Αέρα"
                     navController.navigate(R.id.nav_air)

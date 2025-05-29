@@ -22,6 +22,11 @@
         android:name="com.example.thessense.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_water"
+        android:name="com.example.thessense.ui.watercompare.WaterCompareFragment"
+        android:label="@string/menu_water"
+        tools:layout="@layout/fragment_water" />
 
     <fragment
         android:id="@+id/nav_air"

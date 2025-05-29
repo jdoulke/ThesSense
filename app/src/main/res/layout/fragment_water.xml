@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Περιοχή & Στοιχείο -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
+
+            <Spinner
+                android:id="@+id/area_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="12dp" />
+
+            <Spinner
+                android:id="@+id/element_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <!-- BarChart -->
+        <FrameLayout
+            android:id="@+id/table_container"
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/comparisonChart"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_margin="16dp" />
+
+        </FrameLayout>
+
+        <!-- Year & Month Pickers (1η περίοδος) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <NumberPicker
+                android:id="@+id/year1_picker"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:layout_marginEnd="20dp" />
+
+            <NumberPicker
+                android:id="@+id/month1_picker"
+                android:layout_width="180dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="20dp" />
+        </LinearLayout>
+
+        <!-- Year & Month Pickers (2η περίοδος) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <NumberPicker
+                android:id="@+id/year2_picker"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:layout_marginEnd="20dp" />
+
+            <NumberPicker
+                android:id="@+id/month2_picker"
+                android:layout_width="180dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="20dp" />
+        </LinearLayout>
+
+        <!-- Περιγραφές στοιχείων νερού -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Κύριες παράμετροι του νερού:"
+            android:textSize="19sp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#2C5C8F" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:fadingEdgeLength="64dp"
+            android:requiresFadingEdge="horizontal"
+            android:overScrollMode="always"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/card_container"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Θολότητα -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/blue"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Θολότητα (NTU)"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Δείκτης ύπαρξης σωματιδίων που θολώνουν το νερό."
+                            android:textSize="13sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_medium"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Αργίλιο -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/petrol"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Αργίλιο"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Μεταλλικό στοιχείο που προστίθεται μερικές φορές κατά την επεξεργασία."
+                            android:textSize="13sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_medium"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Αγωγιμότητα -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/blue"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Αγωγιμότητα"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Μετρά τα διαλυμένα άλατα και ιόντα στο νερό."
+                            android:textSize="13sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_medium"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Υπολειμματικό Χλώριο -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/cyan"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Υπολειμματικό Χλώριο"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/lexend_light"
+                            android:textColor="@color/thess"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Εξασφαλίζει την υγιεινή απολύμανση του νερού."
+                            android:textSize="13sp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="24dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/lexend_medium"
+                            android:textColor="@color/thess" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </LinearLayout>
+</ScrollView>
