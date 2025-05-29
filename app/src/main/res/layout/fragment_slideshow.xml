@@ -27,7 +27,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/ic_fullscreen"
-                android:contentDescription="Αναπαραγωγή σε πλήρη οθόνη"
+                android:contentDescription="@string/fullscreen"
                 android:layout_gravity="end"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ενδεικτικά όρια ποιότητας αέρα:"
+            android:text="@string/air_limits"
             android:textSize="21sp"
             android:fontFamily="@font/lexend_medium"
             android:layout_marginTop="24dp"
@@ -108,7 +108,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Μονοξείδιο του Άνθρακα (CO)"
+                            android:text="@string/co"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -147,7 +147,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Μονοξείδιο του Αζώτου (NO)"
+                            android:text="@string/no"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -187,7 +187,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Διοξείδιο του Αζώτου (NO₂)"
+                            android:text="@string/no2"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -227,7 +227,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Διοξείδιο του Θείου (SO₂)"
+                            android:text="@string/so2"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -267,7 +267,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Όζον (Ο₃) \n"
+                            android:text="@string/o3"
                             android:layout_marginTop="24dp"
                             android:gravity="center"
                             android:fontFamily="@font/lexend_light"

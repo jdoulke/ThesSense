@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_about">" About the App"</string>
+    <string name="menu_home">Home</string>
+    <string name="home_image_desc">Home Page Image</string>
+    <string name="menu_gallery">Water Data</string>
+    <string name="menu_slideshow">Air Data</string>
+    <string name="menu_water">Water Comparison</string>
+    <string name="menu_air">Air Comparison</string>
+    <string name="home_desc1">WHAT DOES THE APP DO</string>
+    <string name="home_desc2">ThesSense provides you with water and air quality data for the Thessaloniki region. You can check pollution levels and compare data across different time periods.</string>
+    <string name="fullscreen_icon_desc">Expand Map</string>
+    <string name="co">Carbon Monoxide (CO)</string>
+    <string name="gas">Produced by incomplete combustion of fuels.</string>
+    <string name="no">Nitric Oxide (NO)</string>
+    <string name="no_desc">Generated at high combustion temperatures.</string>
+    <string name="no2">"Nitrogen Dioxide (NO₂) "</string>
+    <string name="no2_desc">Formed by the oxidation of NO in the atmosphere.</string>
+    <string name="so2">Sulfur Dioxide (SO₂)</string>
+    <string name="so2_desc">Released from burning coal or oil containing sulfur.</string>
+    <string name="o3_desc">"Ozone (O₃)  \\n "</string>
+    <string name="o3">Created by photochemical reactions.</string>
+    <string name="app_desc">The ThessSense application was developed by Ioannis Doulkeridis and Efstratios Deligeorgis. The data used come from the Thessaloniki Open Data Space.</string>
+    <string name="water_limit">Indicative water quality limits:</string>
+    <string name="turbidity">Turbidity</string>
+    <string name="color">Color</string>
+    <string name="Aluminum">Aluminum</string>
+    <string name="Chlorides">Chlorides</string>
+    <string name="Conductivity">Conductivit</string>
+    <string name="Residual_Chlorine">Residual Chlorine</string>
+    <string name="fullscreen">Fullscreen</string>
+    <string name="air_limits">Indicative air quality limits:</string>
+    <string name="water_parameters">Main water parameters:</string>
+    <string name="ntu">Turbidity (NTU)</string>
+    <string name="turbidity_water">Indicator of suspended particles that make the water turbid.</string>
+    <string name="aluminum_desc">Metal element sometimes added during water treatment.</string>
+    <string name="conductivity_desc">Measures the dissolved salts and ions in water.</string>
+    <string name="residual_chlorine_desc">Ensures the hygienic disinfection of water.</string>
+</resources>

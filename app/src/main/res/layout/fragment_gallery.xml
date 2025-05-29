@@ -65,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ενδεικτικά όρια ποιότητας νερού:"
+            android:text="@string/water_limit"
             android:textSize="21sp"
             android:fontFamily="@font/lexend_medium"
             android:layout_marginTop="24dp"
@@ -107,7 +107,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Θολότητα"
+                            android:text="@string/turbidity"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -117,7 +117,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≤ 1 NTU"
+                            android:text="@string/turbidity_limit"
                             android:textSize="22sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="40dp"
@@ -145,7 +145,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Χρώμα"
+                            android:text="@string/color"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -184,7 +184,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Αργίλιο"
+                            android:text="@string/Aluminum"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -223,7 +223,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Χλωριούχα"
+                            android:text="@string/Chlorides"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -262,7 +262,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Αγωγιμότητα"
+                            android:text="@string/Conductivity"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -340,7 +340,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Υπολειμματικό\nΧλώριο"
+                            android:text="@string/Residual_Chlorine"
                             android:layout_marginTop="24dp"
                             android:gravity="center"
                             android:fontFamily="@font/lexend_light"

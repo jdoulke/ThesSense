@@ -120,7 +120,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Μονοξείδιο του Άνθρακα (CO)"
+                            android:text="@string/co"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -131,7 +131,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Προέρχεται από ατελή καύση καυσίμων."
+                            android:text="@string/gas"
                             android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="30dp"
@@ -160,7 +160,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Μονοξείδιο του Αζώτου (NO)"
+                            android:text="@string/no"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -171,7 +171,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Παράγεται σε υψηλές θερμοκρασίες κάυσης."
+                            android:text="@string/no_desc"
                             android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="30dp"
@@ -200,7 +200,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Διοξείδιο του Αζώτου (NO₂)"
+                            android:text="@string/no2"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -211,7 +211,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Σχηματίζεται από την οξείδωση του ΝΟ στην ατμόσφαιρα."
+                            android:text="@string/no2_desc"
                             android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="30dp"
@@ -240,7 +240,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Διοξείδιο του Θείου (SO₂)"
+                            android:text="@string/so2"
                             android:layout_marginTop="24dp"
                             android:fontFamily="@font/lexend_light"
                             android:textColor="@color/thess"
@@ -251,7 +251,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Εκλύεται από καύση άνθρακα ή πετρελαίου\nμε θείο."
+                            android:text="@string/so2_desc"
                             android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="30dp"
@@ -280,7 +280,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Όζον (Ο₃) \n"
+                            android:text="@string/o3_desc"
                             android:layout_marginTop="24dp"
                             android:gravity="center"
                             android:fontFamily="@font/lexend_light"
@@ -291,7 +291,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Δημιουργείται από φωτοχημικές αντιδράσεις."
+                            android:text="@string/o3"
                             android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="30dp"
