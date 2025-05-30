@@ -201,6 +201,8 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
             try {
                 val jsonData = loadJSONFromAsset()
                 val jsonObject = JSONObject(jsonData)
+                val currentLang = Locale.getDefault().language
+                var snippet = ""
 
                 val targetMonth = when (selectedMonth) {
                     1 -> "Ιανουάριος"
@@ -229,7 +231,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val ekklisiesLocation = LatLng(40.6328, 22.9677)
 
                         //Υπολογισμός WQI
@@ -261,7 +267,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val analipsiLocation = LatLng(40.6051, 22.9598)
 
                         //Υπολογισμός WQI
@@ -293,7 +303,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val anopoliLocation = LatLng(40.6419, 22.9460)
 
                         //Υπολογισμός WQI
@@ -325,7 +339,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val anotoumpaLocation = LatLng(40.6179, 22.9756)
 
                         //Υπολογισμός WQI
@@ -357,7 +375,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val dethhanthLocation = LatLng(40.6264, 22.9526)
 
                         //Υπολογισμός WQI
@@ -389,7 +411,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val harilaouLocation = LatLng(40.6001, 22.9702)
 
                         //Υπολογισμός WQI
@@ -421,7 +447,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val katotoumpaLocation = LatLng(40.6110, 22.9657)
 
                         //Υπολογισμός WQI
@@ -453,7 +483,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val kentropolisLocation = LatLng(40.6325, 22.9407)
 
                         //Υπολογισμός WQI
@@ -485,7 +519,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val neaparaliaLocation = LatLng(40.6149, 22.9518)
 
                         //Υπολογισμός WQI
@@ -517,7 +555,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val ntepoLocation = LatLng(40.5935, 22.9593)
 
                         //Υπολογισμός WQI
@@ -549,7 +591,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val panagiaLocation = LatLng(40.6467, 22.9383)
 
                         //Υπολογισμός WQI
@@ -581,7 +627,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val plateiaLocation = LatLng(40.6407, 22.9347)
 
                         //Υπολογισμός WQI
@@ -613,7 +663,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val sfageiaLocation = LatLng(40.6418, 22.9105)
 
                         //Υπολογισμός WQI
@@ -645,7 +699,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val sholiLocation = LatLng(40.6136, 22.9536)
 
                         //Υπολογισμός WQI
@@ -677,7 +735,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val triandriaLocation = LatLng(40.6240, 22.9734)
 
                         //Υπολογισμός WQI
@@ -709,7 +771,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                         val agogimotita = locationData.getString("Αγωγιμότητα")
                         val sygkentrosi = locationData.getString("Συγκέντρωση ιόντων υδρογόνου")
                         val ypoleimmatiko = locationData.getString("Υπολειμματικό χλώριο")
-                        val snippet = "Θολότητα NTU: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        snippet = if (currentLang == "el") {
+                            "Θολότητα: $tholotita \nΧρώμα: $hroma \nΑργίλιο: $argilio \nΧλωριούχα: $hloriouha \nΑγωγιμότητα: $agogimotita \nΣυγκέντρωση ιόντων υδρογόνου: $sygkentrosi \nΥπολειμματικό χλώριο: $ypoleimmatiko"
+                        } else {
+                            "Turbidity: $tholotita \nColor: $hroma \nAluminium: $argilio \nChlorides: $hloriouha \nConductivity: $agogimotita \nHydrogen ion concentration: $sygkentrosi \nResidual Chlorine: $ypoleimmatiko"
+                        }
                         val ksirokriniLocation = LatLng(40.6484, 22.9285)
 
                         //Υπολογισμός WQI

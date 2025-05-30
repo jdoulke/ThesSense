@@ -25,7 +25,7 @@
     <string name="so2">Διοξείδιο του Θείου (SO₂)</string>
     <string name="so2_desc">Εκλύεται από καύση άνθρακα ή πετρελαίου\nμε θείο.</string>
     <string name="o3_desc">Δημιουργείται από φωτοχημικές αντιδράσεις.</string>
-    <string name="o3">"Όζον (Ο₃) "</string>
+    <string name="o3">"Όζον (Ο₃)\n"</string>
     <string name="app_desc">Η εφαρμογή ThessSense δημιουργήθηκε από τον Ιωάννη Δουλκερίδη και τον Ευστράτιο Δεληγεώργη. Τα δεδομένα που χρησιμοποιήθηκαν προέρχονται από το Thessaloniki Open Data Space.</string>
     <string name="water_limit">Ενδεικτικά όρια ποιότητας νερού:</string>
     <string name="turbidity">Θολότητα</string>

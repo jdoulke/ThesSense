@@ -54,51 +54,28 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.nav_home -> setHomeTitle()
+                R.id.nav_gallery -> supportActionBar?.title = getString(R.string.menu_gallery)
+                R.id.nav_slideshow -> supportActionBar?.title = getString(R.string.menu_slideshow)
+                R.id.nav_water -> supportActionBar?.title = getString(R.string.menu_water)
+                R.id.nav_air -> supportActionBar?.title = getString(R.string.menu_air)
+                else -> supportActionBar?.title = getString(R.string.app_name)
+            }
+        }
 
         val langItem = findViewById<Toolbar>(R.id.toolbar).menu.findItem(R.id.action_language)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_water, R.id.nav_air
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         updateHeaderLogo()
-
-        // ThessSense title change
-        setHomeTitle()
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    navController.navigate(R.id.nav_home)
-                    setHomeTitle()
-                }
-                R.id.nav_gallery -> {
-                    supportActionBar?.title = "Ποιότητα Νερού"
-                    navController.navigate(R.id.nav_gallery)
-                }
-                R.id.nav_slideshow -> {
-                    supportActionBar?.title = "Ποιότητα Αέρα"
-                    navController.navigate(R.id.nav_slideshow)
-                }
-                R.id.nav_water -> {
-                    supportActionBar?.title = "Σύγκριση Νερού"
-                    navController.navigate(R.id.nav_water)
-                }
-                R.id.nav_air -> {
-                    supportActionBar?.title = "Σύγκριση Αέρα"
-                    navController.navigate(R.id.nav_air)
-                }
-
-                else -> {
-                    Toast.makeText(this, "Unknown item selected", Toast.LENGTH_SHORT).show()
-                }
-            }
-            drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }
     }
 
     private fun setHomeTitle() {

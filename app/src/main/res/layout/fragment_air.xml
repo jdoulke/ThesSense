@@ -280,7 +280,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/o3_desc"
+                            android:text="@string/o3"
                             android:layout_marginTop="24dp"
                             android:gravity="center"
                             android:fontFamily="@font/lexend_light"
@@ -291,7 +291,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/o3"
+                            android:text="@string/o3_desc"
                             android:textSize="13sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="30dp"
