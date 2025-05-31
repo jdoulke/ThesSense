@@ -7,7 +7,7 @@
     <string name="menu_slideshow">Air Data</string>
     <string name="menu_water">Water Comparison</string>
     <string name="menu_air">Air Comparison</string>
-    <string name="home_desc1">WHAT DOES THE APP DO</string>
+    <string name="home_desc1">DISCOVER THE APP</string>
     <string name="home_desc2">ThesSense provides you with water and air quality data for the Thessaloniki region. You can check pollution levels and compare data across different time periods.</string>
     <string name="fullscreen_icon_desc">Expand Map</string>
     <string name="co">Carbon Monoxide (CO)</string>
@@ -38,6 +38,7 @@
     <string name="residual_chlorine_desc">Ensures the hygienic disinfection of water.</string>
     <string name="language">Change Language</string>
     <string name="air_data">Main causes of the gases:</string>
+    <string name="conductivity_desc2">≤ 2500 μS/cm at 20°C</string>
     <string-array name="months_en">
         <item>January</item>
         <item>February</item>

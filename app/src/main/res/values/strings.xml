@@ -45,6 +45,7 @@
     <string name="residual_chlorine_desc">Εξασφαλίζει την υγιεινή απολύμανση του νερού.</string>
     <string name="language">Αλλαγή Γλώσσας</string>
     <string name="air_data">Κύριες αιτίες των αερίων:</string>
+    <string name="conductivity_desc2">≤ 2500 μS/cm στους 20°C</string>
     <string-array name="months_gr">
         <item>Ιανουάριος</item>
         <item>Φεβρουάριος</item>

@@ -272,7 +272,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≤ 2500 μS/cm\nστους 20°C"
+                            android:text="@string/conductivity_desc2"
                             android:textSize="19sp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="40dp"
